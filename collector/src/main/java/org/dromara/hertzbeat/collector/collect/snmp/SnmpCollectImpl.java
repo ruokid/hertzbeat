@@ -260,6 +260,9 @@ public class SnmpCollectImpl extends AbstractCollect {
     private String bingdingHexValueToString(VariableBinding binding) {
         // whether if binding is hex
         String hexString = binding.toValueString();
+        if (binding.getOid().toDottedString().startsWith("1.3.6.1.2.1.2.2.1.6")) {
+            return hexString;
+        }
         if (hexString.contains(HEX_SPLIT)) {
             try {
                 StringBuilder output = new StringBuilder();
